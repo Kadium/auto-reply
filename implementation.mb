@@ -1,0 +1,173 @@
+--- Début du document ---
+
+# Projet de POC - Réponse automatique via IA
+
+Ce projet est un Proof of Concept (POC) qui démontre la possibilité de générer des réponses automatiques à des messages entrants en se basant sur des *templates* prédéfinis et l’API OpenAI. Il s’agit d’une application web simple composée d’un front-end en **React** et d’un back-end en **Node.js**.
+
+## Sommaire
+
+1. [Contexte et objectifs](#contexte-et-objectifs)  
+2. [Fonctionnalités principales](#fonctionnalités-principales)  
+3. [Architecture du projet](#architecture-du-projet)  
+4. [Implémentation](#implémentation)  
+5. [Détails techniques](#détails-techniques)  
+6. [Roadmap](#roadmap)  
+7. [Auteurs & Contact](#auteurs--contact)
+
+---
+
+## Contexte et objectifs
+
+L’objectif de ce POC est de tester la faisabilité d’une **réponse automatique** basée sur l’IA pour des messages entrants.  
+Plutôt que d’utiliser une base de données ou un système complexe, nous conservons ici un environnement **très simple** :
+
+- Les *messages entrants* sont générés fictivement via un script qui les stocke dans un fichier `.json`.
+- Les *templates de réponses* sont définis dans un autre fichier `.json`.
+- L’application interroge l’API d’OpenAI afin de déterminer si un message correspond à l’un de nos templates de réponse prédéfinis.
+- En cas de correspondance, l’application propose une **réponse automatique** construite à partir du template.
+
+Ce projet n’intègre aucune notion d’authentification ou de persistance de données en base, car il s’agit avant tout d’un POC.
+
+---
+
+## Fonctionnalités principales
+
+1. **Génération de messages entrants fictifs**  
+   - Un script (côté back-end) crée aléatoirement de nouveaux messages (support client, demande d’informations, etc.) et les stocke dans un fichier `.json`.
+   - L’utilisateur peut déclencher ce script via un bouton ou un simple appel CLI.
+
+2. **Visualisation des messages entrants**  
+   - Le front-end en React propose une interface minimaliste de type “boîte mail” :
+     - Une *sidebar* listant les messages non traités (les nouveaux messages).
+     - Une zone de lecture/d’édition du message sélectionné.
+
+3. **Réponse automatique**  
+   - L’utilisateur a la possibilité de cliquer sur un bouton “Réponse automatique”.
+   - L’application interroge l’API OpenAI pour identifier si le message entrant correspond à l’un des *templates de réponse*.
+   - Si c’est le cas, un brouillon de réponse (ou la réponse finale) est généré automatiquement et peut être affiché dans l’éditeur.
+
+4. **Suppression du message traité**  
+   - Une fois la réponse validée (ou tout simplement lorsque l’on clique sur “Répondre”), le message est **retiré** de la liste (la queue).
+
+---
+
+## Architecture du projet
+
+mon-projet/
+├── client/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Sidebar.jsx
+│   │   │   └── Editor.jsx
+│   │   ├── App.jsx
+│   │   └── index.js
+│   └── package.json
+├── server/
+│   ├── scripts/
+│   │   └── generateMessages.js
+│   ├── templates/
+│   │   └── templates.json
+│   ├── data/
+│   │   └── messages.json
+│   ├── server.js
+│   └── package.json
+├── README.md
+└── package.json
+
+- **client/** : Contient l’application React (composants, logique front-end…).
+- **server/** : Gère la logique Node.js, notamment :
+  - **scripts/** : Script pour générer des messages factices.
+  - **templates/** : Fichier `.json` contenant les différents modèles de réponses.
+  - **data/** : Fichier `.json` qui stocke les messages générés.
+  - **server.js** : Point d’entrée du serveur Node (routes, API).
+- `README.md` : Documentation du projet (ce fichier).
+
+---
+
+## Implémentation
+
+### 1. Génération des messages entrants
+- Le script `generateMessages.js` crée aléatoirement des messages (simulant des demandes de support, des questions d’information, etc.).
+- Il les insère dans `data/messages.json`.
+
+Exemple de contenu possible :
+
+```json
+[
+  {
+    "id": 1,
+    "sender": "John Doe",
+    "subject": "Problème de livraison",
+    "content": "Bonjour, j'ai un souci avec la livraison de mon colis...",
+    "timestamp": "2023-01-20T10:15:00Z"
+  },
+  {
+    "id": 2,
+    "sender": "Jane Smith",
+    "subject": "Demande d'information",
+    "content": "Bonjour, je voudrais en savoir plus sur vos services...",
+    "timestamp": "2023-01-20T11:00:00Z"
+  }
+]
+
+⸻
+
+
+2. Stockage des templates
+	•	Dans templates/templates.json, on définit différentes réponses automatiques :
+
+```json
+[
+  {
+    "type": "livraison",
+    "keywords": ["livraison", "colis", "expédition"],
+    "response": "Bonjour, nous avons bien reçu votre demande concernant la livraison..."
+  },
+  {
+    "type": "informations",
+    "keywords": ["information", "question", "renseignements"],
+    "response": "Bonjour, merci de votre intérêt. Voici quelques informations utiles..."
+  }
+]
+
+	•	Chaque template contient :
+	•	Un type (ex. “livraison”, “informations”, etc.)
+	•	Une liste de keywords pour guider la compréhension côté IA
+	•	Une réponse possible
+
+3. Identification via l’API OpenAI
+	•	Lorsqu’un message est sélectionné et que l’utilisateur clique sur “Réponse automatique” :
+	1.	On envoie la requête à l’API OpenAI avec le contenu du message.
+	2.	On fournit également nos templates (et leurs mots-clés) dans le prompt pour aider OpenAI à déterminer le meilleur template.
+	3.	Si un template jugé pertinent est trouvé, on récupère la réponse correspondante (avec éventuellement des variables dynamiques insérées).
+
+Exemple de prompt :
+
+“Tu es un assistant chargé de détecter si le message suivant correspond à un des types suivants : livraison, informations, etc. Les modèles de réponses sont les suivants… [liste des templates]. Le message est : … [contenu]. Indique le type le plus pertinent et la réponse associée.”
+
+4. Affichage de la réponse automatique
+	•	Le front-end React met à jour la zone d’édition avec la réponse proposée.
+L’utilisateur peut la valider telle quelle ou la modifier manuellement.
+
+5. Suppression du message (après réponse)
+	•	Une fois le message traité, il est retiré de la liste des nouveaux messages :
+	•	Soit en supprimant l’entrée correspondante dans messages.json.
+	•	Soit en la déplaçant vers une autre liste (ex. messages_archived.json) – au choix.
+
+⸻
+
+Détails techniques
+	•	Front-end (React) :
+	•	Composant Sidebar.jsx pour afficher les messages (messages.json).
+	•	Composant Editor.jsx pour afficher un message et proposer une réponse.
+	•	Un bouton “Réponse automatique” envoie une requête à l’API Node pour générer la réponse.
+	•	Back-end (Node.js) :
+	•	Utilisation d’un serveur Express minimal (ou simple route Node).
+	•	GET /messages pour récupérer la liste des messages depuis messages.json.
+	•	POST /auto-reply pour gérer la logique d’appel à OpenAI et le renvoi de la réponse.
+	•	script generateMessages.js pour alimenter messages.json.
+	•	Pas de base de données : tout est stocké localement en .json.
+	•	Pas d’authentification : c’est un POC, l’objectif est de tester la fonctionnalité de réponse automatique.
+	•	OpenAI : dépendance à l’API d’OpenAI (via le package openai ou équivalent), une clé API est nécessaire.
+
+⸻
