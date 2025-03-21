@@ -1,0 +1,27 @@
+[
+  {
+    "type": "delivery",
+    "keywords": ["delivery", "package", "shipping", "shipment", "order"],
+    "response": "Hello, we have received your inquiry about your delivery. Our team is looking into the status of your order and will provide you with an update as soon as possible. If you need immediate assistance, please provide your order number for faster processing. Thank you for your patience."
+  },
+  {
+    "type": "information",
+    "keywords": ["information", "question", "details", "learn more", "inquiry"],
+    "response": "Hello, thank you for your interest in our services. We'd be happy to provide you with more information. You can find detailed descriptions of our offerings on our website, or we can arrange a call with one of our representatives to discuss your specific needs. Please let us know if you have any particular questions we can answer for you."
+  },
+  {
+    "type": "refund",
+    "keywords": ["refund", "money back", "return", "cancel order"],
+    "response": "Hello, we're sorry to hear you're requesting a refund. Our team will process your request within 3-5 business days. For us to expedite this process, please provide your order number and the reason for your refund request. Rest assured that customer satisfaction is our priority, and we appreciate your feedback to help us improve our services."
+  },
+  {
+    "type": "technical_support",
+    "keywords": ["bug", "error", "not working", "issue", "problem", "support", "help"],
+    "response": "Hello, we apologize for the technical difficulties you're experiencing. Our support team is ready to assist you. To better understand your issue, could you please provide more details about: 1) What specific feature isn't working, 2) Any error messages you're seeing, and 3) What device and browser you're using? This information will help us resolve your issue more efficiently."
+  },
+  {
+    "type": "feedback",
+    "keywords": ["feedback", "suggestion", "improve", "review"],
+    "response": "Hello, thank you for taking the time to share your feedback with us. We greatly value customer input as it helps us improve our products and services. Your comments have been forwarded to the relevant department for consideration. If you have any specific suggestions or further thoughts, we would love to hear them. Thank you for helping us serve you better."
+  }
+]
