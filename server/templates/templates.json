@@ -1,27 +1,167 @@
 [
   {
-    "type": "delivery",
-    "keywords": ["delivery", "package", "shipping", "shipment", "order"],
-    "response": "Hello, we have received your inquiry about your delivery. Our team is looking into the status of your order and will provide you with an update as soon as possible. If you need immediate assistance, please provide your order number for faster processing. Thank you for your patience."
+    "type": "livraison",
+    "keywords": [
+      "livraison",
+      "délai",
+      "délai de livraison",
+      "quand vais-je recevoir",
+      "quand est-ce que je vais recevoir",
+      "quand j'aurai",
+      "combien de temps",
+      "quand arrivera",
+      "date de livraison",
+      "jour de livraison"
+    ],
+    "response": "Merci pour votre message concernant votre livraison. Nous faisons tout notre possible pour livrer votre commande dans les délais prévus. Le délai standard est de 3 à 5 jours ouvrables pour la France métropolitaine. Si vous avez des préoccupations particulières concernant votre livraison, n'hésitez pas à nous fournir votre numéro de commande pour que nous puissions vérifier son statut spécifique. Merci de votre patience et compréhension."
+  },
+  {
+    "type": "localisation_colis",
+    "keywords": [
+      "où est",
+      "localisation",
+      "suivi",
+      "tracking",
+      "où se trouve",
+      "position",
+      "emplacement",
+      "statut colis",
+      "statut de mon colis",
+      "suivi de commande"
+    ],
+    "requires_tracking_number": true,
+    "tracking_patterns": [
+      "#\\d{4,6}",
+      "\\b[A-Z]{2}\\d{9}[A-Z]{2}\\b",
+      "\\b\\d{12,14}\\b",
+      "\\bTRK[A-Z0-9]{8,12}\\b",
+      "\\b[A-Z]{2}[A-Z0-9]{9}[A-Z]{2}\\b"
+    ],
+    "response": "Bonjour, merci de nous avoir fourni votre numéro de suivi. D'après nos informations, votre colis {tracking_number} se trouve actuellement à notre centre de distribution de Marseille. Il a été scanné aujourd'hui à 8h45 et est en cours de préparation pour la livraison finale. La livraison à votre adresse est prévue demain entre 9h et 13h. Vous recevrez une notification par SMS avant la livraison. N'hésitez pas à nous contacter si vous avez d'autres questions."
+  },
+  {
+    "type": "demande_tracking",
+    "keywords": [
+      "où est",
+      "localisation",
+      "suivi",
+      "tracking",
+      "où se trouve",
+      "position",
+      "emplacement",
+      "statut colis",
+      "statut de mon colis",
+      "suivi de commande"
+    ],
+    "response": "Bonjour, merci pour votre demande concernant la localisation de votre colis. Pour nous permettre de vous fournir des informations précises sur l'emplacement actuel de votre colis et sa date de livraison estimée, pourriez-vous nous communiquer votre numéro de suivi ? Ce numéro, généralement au format alphanumérique, se trouve sur votre email de confirmation d'expédition. Une fois que nous aurons ce numéro, nous pourrons vous donner des informations détaillées sur l'état de votre livraison."
   },
   {
     "type": "information",
-    "keywords": ["information", "question", "details", "learn more", "inquiry"],
-    "response": "Hello, thank you for your interest in our services. We'd be happy to provide you with more information. You can find detailed descriptions of our offerings on our website, or we can arrange a call with one of our representatives to discuss your specific needs. Please let us know if you have any particular questions we can answer for you."
+    "keywords": [
+      "information",
+      "produit",
+      "détails",
+      "caractéristiques",
+      "spécifications",
+      "fonctionnalités",
+      "utilisation",
+      "manuel"
+    ],
+    "response": "Merci de votre intérêt pour nos produits. Je serai ravi de vous aider avec les informations que vous recherchez. Pour vous fournir les détails les plus précis, pourriez-vous me préciser quel produit spécifique vous intéresse ? Vous pouvez également consulter notre site web où vous trouverez des fiches techniques détaillées, des guides d'utilisation et des vidéos de démonstration pour tous nos produits. N'hésitez pas à revenir vers moi pour toute question supplémentaire."
   },
   {
-    "type": "refund",
-    "keywords": ["refund", "money back", "return", "cancel order"],
-    "response": "Hello, we're sorry to hear you're requesting a refund. Our team will process your request within 3-5 business days. For us to expedite this process, please provide your order number and the reason for your refund request. Rest assured that customer satisfaction is our priority, and we appreciate your feedback to help us improve our services."
+    "type": "remboursement",
+    "keywords": [
+      "remboursement",
+      "retour",
+      "annulation",
+      "annuler",
+      "renvoyer",
+      "retourner",
+      "produit défectueux",
+      "ne fonctionne pas"
+    ],
+    "response": "Je suis désolé d'apprendre que vous souhaitez effectuer un remboursement. Nous traitons les demandes de remboursement dans un délai de 5 à 10 jours ouvrables après réception du produit retourné. Pour initier ce processus, veuillez consulter notre politique de retour sur notre site web et suivre les instructions indiquées. Vous aurez besoin de votre numéro de commande et d'une preuve d'achat. Si votre produit est défectueux, nous vous invitons à nous fournir des photos ou une description détaillée du problème pour accélérer le traitement. N'hésitez pas à me contacter si vous avez des questions supplémentaires concernant cette procédure."
   },
   {
-    "type": "technical_support",
-    "keywords": ["bug", "error", "not working", "issue", "problem", "support", "help"],
-    "response": "Hello, we apologize for the technical difficulties you're experiencing. Our support team is ready to assist you. To better understand your issue, could you please provide more details about: 1) What specific feature isn't working, 2) Any error messages you're seeing, and 3) What device and browser you're using? This information will help us resolve your issue more efficiently."
+    "type": "support_technique",
+    "keywords": [
+      "problème",
+      "aide",
+      "support",
+      "assistance",
+      "ne marche pas",
+      "bug",
+      "erreur",
+      "panne",
+      "réparation",
+      "technique",
+      "dépanner",
+      "connexion",
+      "connecter",
+      "compte",
+      "identifiant",
+      "mot de passe",
+      "login",
+      "authentification",
+      "accès",
+      "impossible de me connecter",
+      "message d'erreur"
+    ],
+    "response": "Je comprends que vous rencontrez un problème technique et je suis là pour vous aider. Pour que je puisse vous assister efficacement, pourriez-vous me fournir les informations suivantes : 1) Le modèle exact du produit, 2) Une description détaillée du problème que vous rencontrez, 3) Les étapes que vous avez déjà essayées pour résoudre le problème. Ces détails nous aideront à diagnostiquer la situation plus rapidement. Notre équipe technique est disponible du lundi au vendredi, de 9h à 18h, et s'efforcera de résoudre votre problème dans les meilleurs délais."
   },
   {
-    "type": "feedback",
-    "keywords": ["feedback", "suggestion", "improve", "review"],
-    "response": "Hello, thank you for taking the time to share your feedback with us. We greatly value customer input as it helps us improve our products and services. Your comments have been forwarded to the relevant department for consideration. If you have any specific suggestions or further thoughts, we would love to hear them. Thank you for helping us serve you better."
+    "type": "suggestion",
+    "keywords": [
+      "suggestion",
+      "recommandation",
+      "conseil",
+      "avis",
+      "quel produit",
+      "que choisir",
+      "différence entre",
+      "comparaison",
+      "meilleur produit",
+      "proposer"
+    ],
+    "response": "Merci pour votre demande de conseil. Je serais ravi de vous recommander le produit le plus adapté à vos besoins. Afin de vous proposer la solution la plus appropriée, pourriez-vous me préciser : 1) L'usage principal que vous comptez faire du produit, 2) Votre budget approximatif, 3) Toute fonctionnalité spécifique que vous recherchez ? Avec ces informations, je pourrai vous orienter vers les options qui correspondent le mieux à vos attentes et vous expliquer les avantages de chacune."
+  },
+  {
+    "type": "localisation_colis",
+    "keywords": [
+      "où est mon colis",
+      "localisation",
+      "suivi",
+      "tracking",
+      "position",
+      "statut",
+      "emplacement",
+      "localiser",
+      "traquer",
+      "suivre colis",
+      "où se trouve",
+      "où en est"
+    ],
+    "requires_tracking_number": true,
+    "tracking_patterns": ["#\\d{4,6}", "\\b[A-Z]{2}\\d{9}[A-Z]{2}\\b", "\\b\\d{12,14}\\b", "\\bTRK\\d{8,10}\\b"],
+    "response": "Merci pour votre demande concernant votre colis. J'ai consulté notre système de suivi avec le numéro {tracking_number} que vous avez fourni. Votre colis est actuellement en transit et a été scanné pour la dernière fois à notre centre de distribution de Lyon. Selon les dernières informations, la livraison est prévue dans les 48 heures. Vous recevrez une notification par email ou SMS le jour de la livraison avec une fenêtre horaire plus précise. N'hésitez pas à nous contacter si vous avez d'autres questions concernant votre livraison."
+  },
+  {
+    "type": "demande_tracking",
+    "keywords": [
+      "où est mon colis",
+      "localisation",
+      "suivi",
+      "tracking",
+      "position",
+      "statut",
+      "emplacement",
+      "localiser",
+      "traquer",
+      "suivre colis",
+      "où se trouve",
+      "où en est"
+    ],
+    "response": "Merci pour votre demande concernant la localisation de votre colis. Pour que nous puissions vous fournir des informations précises sur l'emplacement actuel de votre commande, nous avons besoin de votre numéro de suivi. Ce numéro se trouve généralement dans l'email de confirmation d'expédition que vous avez reçu. Il peut commencer par des lettres comme 'FR' ou 'BE' suivies de chiffres, ou être un numéro à 12-14 chiffres, ou encore être indiqué avec un # suivi de 4 à 6 chiffres. Dès que vous nous aurez communiqué ce numéro, nous pourrons vous donner des informations précises sur l'état et la localisation de votre colis."
   }
 ]

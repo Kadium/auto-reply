@@ -40,24 +40,24 @@ function Editor({ message, autoReplyContent, onGenerateReply, onSubmitReply, isG
 
   if (!message) {
     return (
-      <div className="flex-1 flex items-center justify-center bg-base-100 p-6">
+      <div className="flex-1 flex items-center justify-center bg-white p-6">
         <div className="text-center text-gray-500">
-          <h3 className="text-lg font-medium">No message selected</h3>
-          <p className="mt-2">Select a message from the sidebar or generate test messages</p>
+          <h3 className="text-lg font-medium">Aucun message sélectionné</h3>
+          <p className="mt-2">Sélectionnez un message dans la barre latérale ou générez des messages de test</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex-1 flex flex-col bg-base-100">
+    <div className="flex-1 flex flex-col bg-white">
       {/* Message header */}
-      <div className="p-4 border-b">
+      <div className="p-4 border-b bg-[#E9C46A]/10">
         <div className="flex justify-between items-center">
-          <h2 className="text-xl font-semibold">{message.subject}</h2>
+          <h2 className="text-xl font-semibold text-[#264653]">{message.subject}</h2>
         </div>
-        <div className="text-sm text-gray-500 mt-1">
-          From: <span className="font-medium">{message.sender}</span>
+        <div className="text-sm text-gray-600 mt-1">
+          De: <span className="font-medium">{message.sender}</span>
         </div>
       </div>
 
@@ -69,17 +69,21 @@ function Editor({ message, autoReplyContent, onGenerateReply, onSubmitReply, isG
       </div>
 
       {/* Reply section */}
-      <div className="p-4 bg-base-200 border-t">
+      <div className="p-4 bg-[#F5F7F9] border-t">
         <div className="flex mb-2 justify-between">
-          <h3 className="text-lg font-medium">Your Reply</h3>
-          <button className="btn btn-primary btn-sm" onClick={onGenerateReply} disabled={isGeneratingReply}>
+          <h3 className="text-lg font-medium text-[#264653]">Votre Réponse</h3>
+          <button
+            className="btn bg-[#2A9D8F] hover:bg-[#264653] text-white border-none btn-sm"
+            onClick={onGenerateReply}
+            disabled={isGeneratingReply}
+          >
             {isGeneratingReply ? (
               <>
                 <div className="loading loading-spinner loading-xs mr-1"></div>
-                Generating...
+                Génération...
               </>
             ) : (
-              'Auto-Reply'
+              'Réponse Auto'
             )}
           </button>
         </div>
@@ -87,20 +91,24 @@ function Editor({ message, autoReplyContent, onGenerateReply, onSubmitReply, isG
         <textarea
           value={replyContent}
           onChange={(e) => setReplyContent(e.target.value)}
-          placeholder="Write your reply here..."
-          className="textarea textarea-bordered w-full h-32 mb-3"
+          placeholder="Écrivez votre réponse ici..."
+          className="textarea border-[#2A9D8F]/30 focus:border-[#2A9D8F] w-full h-32 mb-3"
           disabled={isGeneratingReply}
         ></textarea>
 
         <div className="flex justify-end">
-          <button className="btn btn-success" onClick={handleSendReply} disabled={!replyContent.trim() || isSending}>
+          <button
+            className="btn bg-[#E76F51] hover:bg-[#F4A261] text-white border-none"
+            onClick={handleSendReply}
+            disabled={!replyContent.trim() || isSending}
+          >
             {isSending ? (
               <>
                 <div className="loading loading-spinner loading-xs mr-1"></div>
-                Sending...
+                Envoi...
               </>
             ) : (
-              'Send Reply'
+              'Envoyer'
             )}
           </button>
         </div>

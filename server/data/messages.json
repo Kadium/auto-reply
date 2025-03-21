@@ -1,58 +1,50 @@
 [
   {
+    "id": 1,
+    "sender": "Sophie Martin",
+    "subject": "Suivi de ma commande #3928",
+    "content": "Bonjour, pourriez-vous me dire où se trouve ma commande ? Je l'ai passée il y a 5 jours et je n'ai toujours rien reçu.",
+    "timestamp": "2025-03-21T20:54:30.800Z",
+    "type": "localisation_colis"
+  },
+  {
     "id": 2,
-    "sender": "Jennifer Martinez",
-    "subject": "My experience with your service",
-    "content": "Your customer service team was excellent, but the product quality could be better.",
-    "timestamp": "2025-03-20T18:59:01.314Z"
+    "sender": "Jennifer Leroy",
+    "subject": "Annulation de commande",
+    "content": "Bonjour, j'aimerais annuler ma commande passée récemment. Malheureusement, j'ai changé d'avis et je préfère obtenir un remboursement. Merci de bien vouloir me confirmer la prise en compte de ma demande.",
+    "timestamp": "2025-03-21T20:54:33.240Z",
+    "type": "remboursement"
   },
   {
     "id": 3,
-    "sender": "Jessica Thompson",
-    "subject": "Suggestion for improvement",
-    "content": "Your service is good, but it could be improved by making the checkout process simpler.",
-    "timestamp": "2025-03-20T18:59:01.314Z"
-  },
-  {
-    "id": 4,
-    "sender": "John Smith",
-    "subject": "Login issue",
-    "content": "I can't log into my account. It keeps saying \"invalid credentials\" even though I'm sure my password is correct.",
-    "timestamp": "2025-03-20T18:59:15.705Z"
-  },
-  {
-    "id": 5,
-    "sender": "Michael Brown",
-    "subject": "Refund request",
-    "content": "I need to cancel my recent order before it ships. Can you process a refund?",
-    "timestamp": "2025-03-20T18:59:15.705Z"
+    "sender": "Jean Dupont",
+    "subject": "Site web qui ne fonctionne pas",
+    "content": "Bonjour,\n\nJe rencontre des difficultés à accéder à votre site web depuis ce matin. Lorsque j'essaie de me connecter, la page ne se charge pas correctement et je reçois un message d'erreur. Pouvez-vous m'aider à résoudre ce problème rapidement ? Merci d'avance pour votre assistance.",
+    "timestamp": "2025-03-21T20:56:43.882Z",
+    "type": "support_technique"
   },
   {
     "id": 6,
-    "sender": "John Smith",
-    "subject": "Refund request",
-    "content": "I want to return the product I purchased last week. How do I get a refund?",
-    "timestamp": "2025-03-20T18:59:15.705Z"
+    "sender": "Thomas Moreau",
+    "subject": "Site web qui ne fonctionne pas",
+    "content": "Bonjour, je rencontre des problèmes avec votre site web, il ne se charge pas du tout lorsque j'essaie d'y accéder. J'ai essayé de rafraîchir la page plusieurs fois mais cela ne fonctionne toujours pas. Pouvez-vous m'aider à résoudre ce problème au plus vite ? Merci d'avance pour votre assistance.",
+    "timestamp": "2025-03-21T21:00:54.690Z",
+    "type": "support_technique"
   },
   {
     "id": 7,
-    "sender": "Amanda White",
-    "subject": "Delivery delay",
-    "content": "My tracking number doesn't show any updates for days. Is my package lost?",
-    "timestamp": "2025-03-20T18:59:16.374Z"
+    "sender": "Jennifer Leroy",
+    "subject": "Annulation de commande",
+    "content": "Bonjour,\n\nJe souhaite annuler ma commande passée récemment et demander un remboursement. Merci de bien vouloir me confirmer la prise en compte de ma demande et me donner les détails concernant la procédure de remboursement.\n\nCordialement.",
+    "timestamp": "2025-03-21T21:01:27.177Z",
+    "type": "remboursement"
   },
   {
     "id": 8,
-    "sender": "Jennifer Martinez",
-    "subject": "Money back request",
-    "content": "I need to cancel my recent order before it ships. Can you process a refund?",
-    "timestamp": "2025-03-20T18:59:16.374Z"
-  },
-  {
-    "id": 9,
-    "sender": "Sarah Johnson",
-    "subject": "Question about your services",
-    "content": "What's the difference between your basic and premium plans?",
-    "timestamp": "2025-03-20T18:59:16.374Z"
+    "sender": "Michel Bernard",
+    "subject": "Retour produit",
+    "content": "Bonjour,\n\nJ'ai récemment acheté un produit sur votre site, mais malheureusement je me suis trompé de taille. J'aimerais donc le retourner pour obtenir un remboursement. Pouvez-vous me guider sur la procédure à suivre pour renvoyer le produit?\n\nMerci d'avance pour votre aide.",
+    "timestamp": "2025-03-21T21:01:29.949Z",
+    "type": "remboursement"
   }
 ]
